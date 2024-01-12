@@ -49,6 +49,9 @@ st.subheader("Current")
 plot_raw_data(year)
 st.write(data.tail())
 
+
+st.header(selected_stock_name + " (" + selected_stock + ")")
+st.subheader("Forecast")
 n_years = st.slider("Years of Prediction:", 1, 4)
 period = n_years * 365
 
@@ -59,8 +62,6 @@ m.fit(df_training)
 future = m.make_future_dataframe(periods=period)
 forcast = m.predict(future)
 
-st.header(selected_stock_name + " (" + selected_stock + ")")
-st.subheader("Forecast")
 
 fig1 = plot_plotly(m, forcast)
 st.plotly_chart(fig1)
